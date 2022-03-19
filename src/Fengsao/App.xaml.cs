@@ -23,6 +23,10 @@ namespace Fengsao
             containerRegistry.Register<FengsaoService>();
             containerRegistry.RegisterForNavigation<RandomPoem>();
         }
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            _ = moduleCatalog.AddModule<AuthorsModule.AuthorsModule>();
+        }
     }
 
 }

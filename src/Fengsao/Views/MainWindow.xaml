@@ -39,26 +39,26 @@
             </Metro:MetroTitleMenuItem>
         </Metro:MetroTitleMenu>
     </Metro:MetroWindow.Menu>
-        <Metro:AduTabControl Background="#FFF">
-            <Metro:AduTabControl.Resources>
-                <Style TargetType="TabPanel">
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                </Style>
-            </Metro:AduTabControl.Resources>
-            <Metro:AduTabItem Header="随缘">
-                <Border >
-                    <ContentControl prism:RegionManager.RegionName="RandomPoemRegion"/>
-                </Border>
-            </Metro:AduTabItem>
-            <Metro:AduTabItem Header="作者">
-                <Border >
-                    <ContentControl prism:RegionManager.RegionName="PoemAuthorRegion"/>
-                </Border>
-            </Metro:AduTabItem>
-            <Metro:AduTabItem Header="朝代">
-                <Border >
-                    <ContentControl prism:RegionManager.RegionName="PoemDynastyRegion"/>
-                </Border>
-            </Metro:AduTabItem>
-        </Metro:AduTabControl>
+    <Metro:AduTabControl Background="#C7AB7A">
+        <Metro:AduTabControl.Resources>
+            <Style TargetType="TabPanel">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+        </Metro:AduTabControl.Resources>
+        <Metro:AduTabItem Header="随缘">
+            <Border >
+                <ContentControl prism:RegionManager.RegionName="RandomPoemRegion"/>
+            </Border>
+        </Metro:AduTabItem>
+        <Metro:AduTabItem Header="作者">
+            <Border >
+                <ContentControl prism:RegionManager.RegionName="PoemAuthorRegion"/>
+            </Border>
+        </Metro:AduTabItem>
+        <Metro:AduTabItem Header="朝代">
+            <Border >
+                <ContentControl prism:RegionManager.RegionName="PoemDynastyRegion"/>
+            </Border>
+        </Metro:AduTabItem>
+    </Metro:AduTabControl>
 </Metro:MetroWindow>

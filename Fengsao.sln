@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fengsao.Application", "src\Fengsao.Application\Fengsao.Application.csproj", "{6911F9BE-9A33-40DB-8316-C61E82B28CB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fengsao.AuthorsModule", "src\Fengsao.AuthorsModule\Fengsao.AuthorsModule.csproj", "{0FB30EDF-BA7F-4F55-9502-8E2DA38F18A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{6911F9BE-9A33-40DB-8316-C61E82B28CB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6911F9BE-9A33-40DB-8316-C61E82B28CB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6911F9BE-9A33-40DB-8316-C61E82B28CB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB30EDF-BA7F-4F55-9502-8E2DA38F18A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB30EDF-BA7F-4F55-9502-8E2DA38F18A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB30EDF-BA7F-4F55-9502-8E2DA38F18A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB30EDF-BA7F-4F55-9502-8E2DA38F18A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4A2F6964-21F4-4645-8D83-AE00AD5A76CF} = {288644D6-211A-469A-B471-25999B6C5333}
 		{6911F9BE-9A33-40DB-8316-C61E82B28CB8} = {288644D6-211A-469A-B471-25999B6C5333}
+		{0FB30EDF-BA7F-4F55-9502-8E2DA38F18A2} = {288644D6-211A-469A-B471-25999B6C5333}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E29B0E1-2240-4F3B-BFC9-4C07B80824C5}

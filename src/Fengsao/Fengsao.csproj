@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fengsao.Application\Fengsao.Application.csproj" />
+    <ProjectReference Include="..\Fengsao.AuthorsModule\Fengsao.AuthorsModule.csproj" />
   </ItemGroup>
 
   <ItemGroup>
