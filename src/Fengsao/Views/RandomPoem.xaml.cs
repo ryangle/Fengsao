@@ -19,10 +19,10 @@ namespace Fengsao.Views
     /// RandomPoem.xaml 的交互逻辑
     /// </summary>
     public partial class RandomPoem : UserControl
-   {
-      public RandomPoem()
-      {
-         InitializeComponent();
-      }
-   }
+    {
+        public RandomPoem()
+        {
+            InitializeComponent();
+        }
+    }
 }

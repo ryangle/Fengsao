@@ -51,13 +51,19 @@ public class FengsaoService
         fengsaoContext.SaveChanges();
         return textual;
     }
-    public Textual GetRandomTextual()
+    public PoemDto GetRandomTextual()
     {
         using FengsaoContext fengsaoContext = new FengsaoContext();
         var count = fengsaoContext.Textuals.Count();
         Random random = new Random();
         var r = random.Next(count - 1);
-        var textual = fengsaoContext.Textuals.First(t => t.Id >= r);
-        return textual;
+
+        var result = fengsaoContext.Textuals.Where(t => t.Id == r).Join(fengsaoContext.Authors, t => t.AuthorId, a => a.Id, (t, a) => new PoemDto
+        {
+            Text = t.Text,
+            Title = t.Title,
+            AuthorName = a.Name
+        }).First();
+        return result ?? new PoemDto();
     }
 }

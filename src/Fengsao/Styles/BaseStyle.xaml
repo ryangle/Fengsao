@@ -5,8 +5,8 @@
         <GradientStop Offset="0" Color="{DynamicResource PrimaryColor}" />
         <GradientStop Offset="1" Color="{DynamicResource DarkPrimaryColor}" />
     </LinearGradientBrush>
-    <Color x:Key="PrimaryColor">#FF00FF</Color>
-    <Color x:Key="DarkPrimaryColor">#007ACC</Color>
+    <Color x:Key="PrimaryColor">#C7AB7A</Color>
+    <Color x:Key="DarkPrimaryColor">#5A5049</Color>
     <SolidColorBrush x:Key="DefaultBrush" Color="#000000" />
     <SolidColorBrush x:Key="DefaultWhiteBrush" Color="#FFF" />
     <SolidColorBrush x:Key="DefaultMouseOverBrush" Color="#00ffff" />

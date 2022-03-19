@@ -20,21 +20,35 @@ public class RandomPoemViewModel : BindableBase, INavigationAware
         get { return _poemTitle; }
         set { SetProperty(ref _poemTitle, value); }
     }
+    private string? _poemAuthor;
+    public string? PoemAuthor
+    {
+        get { return _poemAuthor; }
+        set { SetProperty(ref _poemAuthor, value); }
+    }
     private string? _poemText;
     public string? PoemText
     {
         get { return _poemText; }
         set { SetProperty(ref _poemText, value); }
     }
+
+    public DelegateCommand NextCommand { get; private set; }
+
     private FengsaoService _fengsaoService;
     public RandomPoemViewModel(FengsaoService fengsaoService)
     {
         _fengsaoService = fengsaoService;
+        NextCommand = new DelegateCommand(Next);
+        Next();
+    }
+    private void Next()
+    {
         var x = _fengsaoService.GetRandomTextual();
         PoemText = x.Text;
         PoemTitle = x.Title;
+        PoemAuthor = $"{x.AuthorName}";
     }
-
     public void OnNavigatedTo(NavigationContext navigationContext)
     {
         //throw new NotImplementedException();
