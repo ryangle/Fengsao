@@ -1,10 +1,10 @@
 ﻿# 用于熟悉Prism和AduSkin的项目
 
-* 控件使用[AduSkin](https://github.com/aduskin/AduSkin)
-* 使用[Prism](https://github.com/PrismLibrary/Prism)作为MVVM框架
-* 使用Sqlite数据库，存储中国古代诗歌数据。
-* 使用Entity Framework Core作为OR/M
-* 
+* 控件采用用[AduSkin](https://github.com/aduskin/AduSkin)；
+* MVVM框架采用[Prism](https://github.com/PrismLibrary/Prism)；
+* 使用Sqlite数据库，存储中国古代诗歌数据；
+* ORM框架采用Entity Framework Core；
+* 日志组件采用Serilog;
 
 ## 计划
 

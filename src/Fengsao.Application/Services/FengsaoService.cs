@@ -1,4 +1,5 @@
 ﻿using Fengsao.Application.Models;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace Fengsao.Application.Services;
 
 public class FengsaoService
 {
+    private readonly ILogger _logger;
+    public FengsaoService(ILogger<FengsaoService> logger)
+    {
+        _logger = logger;
+    }
     public Author AddAuthor(Author author)
     {
         using FengsaoContext fengsaoContext = new FengsaoContext();
@@ -29,6 +35,7 @@ public class FengsaoService
     }
     public List<Author> GetAuthor(int page = 0, int pageSize = 100)
     {
+        _logger.LogDebug($"GetAuthro {page},{pageSize}");
         if (page < 0 || pageSize <= 0)
         {
             return new List<Author>();

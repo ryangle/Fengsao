@@ -5,6 +5,10 @@ using System.Windows;
 using Prism.Regions;
 using Fengsao.Application.Services;
 using Fengsao.Views;
+using Microsoft.Extensions.DependencyInjection;
+using Serilog;
+using Unity;
+using Unity.Microsoft.DependencyInjection;
 
 namespace Fengsao
 {
@@ -15,6 +19,11 @@ namespace Fengsao
     {
         protected override Window CreateShell()
         {
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .MinimumLevel.Debug()
+                .WriteTo.File("fengsao_.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
             return Container.Resolve<MainWindow>();
         }
 
@@ -22,6 +31,15 @@ namespace Fengsao
         {
             containerRegistry.Register<FengsaoService>();
             containerRegistry.RegisterForNavigation<RandomPoem>();
+        }
+        protected override IContainerExtension CreateContainerExtension()
+        {
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
+
+            var container = new UnityContainer();
+            container.BuildServiceProvider(serviceCollection);
+            return new UnityContainerExtension(container);
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
