@@ -32,7 +32,6 @@ public class RandomPoemViewModel : BindableBase, INavigationAware
         get { return _poemText; }
         set { SetProperty(ref _poemText, value); }
     }
-
     public DelegateCommand NextCommand { get; private set; }
 
     private FengsaoService _fengsaoService;

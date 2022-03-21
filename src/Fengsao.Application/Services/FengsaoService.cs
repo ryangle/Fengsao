@@ -27,7 +27,16 @@ public class FengsaoService
         AddAuthor(author);
         return author;
     }
-
+    public List<Author> GetAuthor(int page = 0, int pageSize = 100)
+    {
+        if (page < 0 || pageSize <= 0)
+        {
+            return new List<Author>();
+        }
+        using FengsaoContext fengsaoContext = new FengsaoContext();
+        var authors = fengsaoContext.Authors.Skip(page * pageSize).Take(pageSize).ToList();
+        return authors ?? new List<Author>();
+    }
     public Dynasty AddDynasty(Dynasty dynasty)
     {
         using FengsaoContext fengsaoContext = new FengsaoContext();

@@ -30,35 +30,19 @@
             </Grid>
         </Border>
         <Metro:MetroScrollViewer Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Stretch"  VerticalScrollBarVisibility="Auto">
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Metro:MetroTextBlock 
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Grid.Row="0"
-                        TextWrapping="Wrap" 
-                    Margin="0,0,10,0"
-                        FontSize="18"
-                        FontWeight="Light"/>
-                <Metro:MetroTextBlock 
-                        Grid.Row="1"
-                        HorizontalAlignment="Right"
-                    Margin="0,0,10,0"
-                        FontSize="12"
-                        FontWeight="Light"/>
-
-                <Metro:MetroTextBlock
-                        Grid.Row="2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="16"
+            <ListBox ItemsSource="{Binding Authors}" Width="500" FontSize="18" Margin="0,20"
                         FontWeight="Light"
-                        TextWrapping="Wrap"/>
-            </Grid>
+                        Foreground="{StaticResource DefaultWhiteBrush}" Background="#C7AB7A">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
         </Metro:MetroScrollViewer>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Metro:AduFlatButton Margin="20,0" Command="{Binding PreviousCommand}" VerticalAlignment="Top" Content="上一页" Type="warning" />
+            <Metro:AduFlatButton Margin="20,0" Command="{Binding NextCommand}" VerticalAlignment="Top" Content="下一页" Type="warning" />
+        </StackPanel>
     </Grid>
 </UserControl>

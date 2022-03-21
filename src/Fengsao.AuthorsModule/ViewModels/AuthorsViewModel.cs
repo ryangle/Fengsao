@@ -1,4 +1,5 @@
-﻿using Fengsao.Application.Services;
+﻿using Fengsao.Application.Models;
+using Fengsao.Application.Services;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -7,60 +8,106 @@ using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 
 namespace Fengsao.AuthorsModule.ViewModels;
 
-public class AuthorsViewModel : BindableBase, INavigationAware
+public class AuthorsViewModel : BindableBase
 {
-    private string? _poemTitle;
-    public string? PoemTitle
+    private ObservableCollection<string>? _authors;
+    public ObservableCollection<string>? Authors
     {
-        get { return _poemTitle; }
-        set { SetProperty(ref _poemTitle, value); }
+        get { return _authors; }
+        set { SetProperty(ref _authors, value); }
     }
-    private string? _poemAuthor;
-    public string? PoemAuthor
-    {
-        get { return _poemAuthor; }
-        set { SetProperty(ref _poemAuthor, value); }
-    }
-    private string? _poemText;
-    public string? PoemText
-    {
-        get { return _poemText; }
-        set { SetProperty(ref _poemText, value); }
-    }
+    private int _currentPage = 0;
+    public int _pageSize = 100;
 
+    private bool _canNext = true;
+    public bool CanNext
+    {
+        get { return _canNext; }
+        set
+        {
+            SetProperty(ref _canNext, value);
+            NextCommand.RaiseCanExecuteChanged();
+        }
+    }
+    private bool _canPrevious = false;
+    public bool CanPrevious
+    {
+        get { return _canPrevious; }
+        set
+        {
+            SetProperty(ref _canPrevious, value);
+            PreviousCommand.RaiseCanExecuteChanged();
+        }
+    }
+    public DelegateCommand PreviousCommand { get; private set; }
     public DelegateCommand NextCommand { get; private set; }
 
     private FengsaoService _fengsaoService;
     public AuthorsViewModel(FengsaoService fengsaoService)
     {
         _fengsaoService = fengsaoService;
-        NextCommand = new DelegateCommand(Next);
+        Authors = new ObservableCollection<string>();
+        PreviousCommand = new DelegateCommand(Previous).ObservesCanExecute(() => CanPrevious);
+        NextCommand = new DelegateCommand(Next).ObservesCanExecute(() => CanNext);
+        var authors = _fengsaoService.GetAuthor(_currentPage, _pageSize);
+        foreach (var author in authors)
+        {
+            Authors.Add(author.Name);
+        }
     }
-    private void Next()
+    public void Previous()
     {
-        var x = _fengsaoService.GetRandomTextual();
-        PoemText = x.Text;
-        PoemTitle = x.Title;
-        PoemAuthor = $"{x.AuthorName}";
-    }
-    public void OnNavigatedTo(NavigationContext navigationContext)
-    {
-        //throw new NotImplementedException();
-    }
+        if (_currentPage == 0)
+        {
+            CanPrevious = false;
+            return;
+        }
+        CanNext = true;
 
-    public bool IsNavigationTarget(NavigationContext navigationContext)
-    {
-        return true;
-        //throw new NotImplementedException();
-    }
+        _currentPage--;
+        var authors = _fengsaoService.GetAuthor(_currentPage, _pageSize);
 
-    public void OnNavigatedFrom(NavigationContext navigationContext)
+
+        if (Authors != null && authors != null)
+        {
+            Authors.Clear();
+            foreach (var author in authors)
+            {
+                Authors.Add(author.Name);
+            }
+        }
+    }
+    public void Next()
     {
-        //throw new NotImplementedException();
+        _currentPage++;
+        var authors = _fengsaoService.GetAuthor(_currentPage, _pageSize);
+
+        if (authors != null && authors.Count > 0)
+        {
+            CanPrevious = true;
+            if (authors.Count < _pageSize)
+            {
+                CanNext = false;
+            }
+        }
+        else
+        {
+            CanNext = false;
+        }
+
+        if (Authors != null && authors != null)
+        {
+            Authors.Clear();
+            foreach (var author in authors)
+            {
+                Authors.Add(author.Name);
+            }
+        }
     }
 }
