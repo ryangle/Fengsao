@@ -43,7 +43,7 @@
         <Setter Property="Padding" Value="10 10 10 10"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="BorderBrush" Value="#EBEBEB"></Setter>
-        <Setter Property="Effect" Value="{StaticResource CardShadow}"></Setter>
+        <!--<Setter Property="Effect" Value="{StaticResource CardShadow}"></Setter>-->
     </Style>
 
     <Storyboard x:Key="Custom1Transition" x:Shared="False">

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AduSkin" Version="1.1.1.9" />
+		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Fengsao.Application\Fengsao.Application.csproj" />
+		<ProjectReference Include="..\Fengsao.Resources\Fengsao.Resources.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\aduskin.png" />
+	  <Resource Include="Resources\editIcon.png" />
+	  <Resource Include="Resources\github.png" />
+	  <Resource Include="Resources\Img\Header\头像1.png" />
+	  <Resource Include="Resources\Img\Header\头像2.png" />
+	  <Resource Include="Resources\Img\Header\头像3.png" />
+	  <Resource Include="Resources\Img\Header\头像4.png" />
+	  <Resource Include="Resources\Img\Header\头像5.png" />
+	  <Resource Include="Resources\Img\Header\头像6.png" />
+	  <Resource Include="Resources\pic.jpg" />
+	  <Resource Include="Resources\tabIcon.png" />
+	  <Resource Include="Resources\titleMuenIcon.png" />
+	</ItemGroup>
+
+</Project>

@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resource\logo.ico" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <PackageReference Include="AduSkin" Version="1.1.1.9" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
@@ -23,8 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fengsao.AduSkinModule\Fengsao.AduSkinModule.csproj" />
     <ProjectReference Include="..\Fengsao.Application\Fengsao.Application.csproj" />
     <ProjectReference Include="..\Fengsao.AuthorsModule\Fengsao.AuthorsModule.csproj" />
+    <ProjectReference Include="..\Fengsao.Resources\Fengsao.Resources.csproj" />
   </ItemGroup>
 
   <ItemGroup>

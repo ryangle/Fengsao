@@ -1,0 +1,70 @@
+<UserControl x:Class="Fengsao.AduSkinModule.Views.CommonControlCase"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:AduAttach="clr-namespace:AduSkin.Controls.Attach;assembly=AduSkin"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="1800" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/AduTreeView.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/BaseStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/Converter.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/ShowControl.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource DefaultBackground}" >
+        <Metro:MetroScrollViewer HorizontalScrollBarVisibility="Disabled">
+            <Metro:MetroWaterfallFlow x:Name="waterfallFlow" ListWidth="300">
+                <Grid>
+                    <Border Style="{StaticResource ShowControlBorder}">
+                        <Metro:AnimationPath Width="100" Height="100" IsPlaying="{Binding IsPlaying}" VerticalAlignment="Center" Data="{StaticResource Icon_Github}" Stretch="Uniform" Stroke="{DynamicResource DefaultBrush}" StrokeThickness="3"  Duration="0:0:6" />
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Border Style="{StaticResource ShowControlBorder}">
+                        <WrapPanel Orientation="Horizontal">
+                            <Metro:MetroColorPicker x:Name="color1" Width="50" Height="50" Padding="5" Background="#EE796F" DefaultColor="#EE796F" />
+                            <Metro:MetroColorPicker x:Name="color2" Width="50" Height="50" Padding="5" Background="#6D819A" DefaultColor="#6D819A" IsEnabled="False" />
+                        </WrapPanel>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Border Style="{StaticResource ShowControlBorder}">
+                        <StackPanel>
+                            <Metro:HCRunningBlock Duration="0:0:20" Margin="0,0,0,10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Padding="5,0">
+                                        <Image Source="../Resources/Img/Header/头像1.png" Width="32" Height="32" />
+                                    </Border>
+                                    <Border Padding="5,0">
+                                        <Image Source="../Resources/Img/Header/头像2.png" Width="32" Height="32" />
+                                    </Border>
+                                    <Border Padding="5,0">
+                                        <Image Source="../Resources/Img/Header/头像3.png" Width="32" Height="32"/>
+                                    </Border>
+                                    <Border Padding="5,0">
+                                        <Image Source="../Resources/Img/Header/头像4.png" Width="32" Height="32"/>
+                                    </Border>
+                                    <Border Padding="5,0" >
+                                        <Image Source="../Resources/Img/Header/头像5.png" Width="32" Height="32"/>
+                                    </Border>
+                                    <Border Padding="5,0" >
+                                        <Image Source="../Resources/Img/Header/头像6.png" Width="32" Height="32"/>
+                                    </Border>
+                                </StackPanel>
+                            </Metro:HCRunningBlock>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Metro:MetroWaterfallFlow>
+        </Metro:MetroScrollViewer>
+    </Grid>
+</UserControl>

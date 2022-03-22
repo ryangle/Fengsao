@@ -6,10 +6,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/ButtonStyle.xaml"/>
-                <ResourceDictionary Source="/Styles/BaseStyle.xaml"/>
-                <ResourceDictionary Source="/Styles/ShowControl.xaml"/>
-                <ResourceDictionary Source="/Styles/Converter.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/AduTreeView.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/BaseStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/Converter.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/ShowControl.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -44,6 +44,7 @@ namespace Fengsao
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             _ = moduleCatalog.AddModule<AuthorsModule.AuthorsModule>();
+            _ = moduleCatalog.AddModule<AuthorsModule.AduSkinModule>();
         }
     }
 
