@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace Fengsao.AduSkinModule.ViewModels;
 
-public class CommonControlCaseViewModel : BindableBase
+public class CommonControlViewModel : BindableBase
 {
     public bool _isPlaying;
     public bool IsPlaying
@@ -22,7 +22,7 @@ public class CommonControlCaseViewModel : BindableBase
         get { return _isPlaying; }
         set { SetProperty(ref _isPlaying, value); }
     }
-    public CommonControlCaseViewModel(FengsaoService fengsaoService)
+    public CommonControlViewModel(FengsaoService fengsaoService)
     {
         IsPlaying = true;
     }

@@ -1,4 +1,5 @@
-﻿# 用于熟悉Prism和AduSkin的项目
+﻿# 中国诗歌
+本项目主要用于实践Prism和AduSkin
 
 * 控件采用用[AduSkin](https://github.com/aduskin/AduSkin)；
 * MVVM框架采用[Prism](https://github.com/PrismLibrary/Prism)；

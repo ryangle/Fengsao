@@ -10,7 +10,7 @@ namespace Fengsao.AuthorsModule
         public void OnInitialized(IContainerProvider containerProvider)
         {
             var regionManager = containerProvider.Resolve<IRegionManager>();
-            regionManager.RegisterViewWithRegion("OtherControlRegion", typeof(CommonControlCase));
+            regionManager.RegisterViewWithRegion("OtherControlRegion", typeof(CommonControl));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

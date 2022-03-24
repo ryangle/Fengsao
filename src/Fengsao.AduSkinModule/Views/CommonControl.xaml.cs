@@ -20,9 +20,9 @@ namespace Fengsao.AduSkinModule.Views;
 /// <summary>
 /// CommonControlCase.xaml 的交互逻辑
 /// </summary>
-public partial class CommonControlCase : UserControl
+public partial class CommonControl : UserControl
 {
-  public CommonControlCase()
+  public CommonControl()
   {
      InitializeComponent();
 
