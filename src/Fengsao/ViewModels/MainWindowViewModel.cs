@@ -24,18 +24,11 @@ public class MainWindowViewModel : BindableBase
     void ExecuteLoadingCommand()
     {
         RegionMannager.RequestNavigate("RandomPoemRegion", "RandomPoem");
-        //RegionMannager.RequestNavigate("PoemAuthorRegion", "RandomPoem");
-        //RegionMannager.RequestNavigate("PoemDynastyRegion", "RandomPoem");
-        //var x = _fengsaoService.GetRandomTextual();
-        //PoemText = x.Text;
-        //PoemTitle = x.Title;
+        RegionMannager.RequestNavigate("PoemDynastyRegion", "Dynasty");
     }
-    private FengsaoService _fengsaoService;
-    public MainWindowViewModel(IRegionManager regionManager,
-        FengsaoService fengsaoService)
+    public MainWindowViewModel(IRegionManager regionManager)
     {
         RegionMannager = regionManager;
-        _fengsaoService = fengsaoService;
 
     }
 }

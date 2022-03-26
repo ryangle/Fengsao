@@ -16,15 +16,8 @@ namespace Fengsao.AduSkinModule.ViewModels;
 
 public class CommonControlViewModel : BindableBase
 {
-    public bool _isPlaying;
-    public bool IsPlaying
-    {
-        get { return _isPlaying; }
-        set { SetProperty(ref _isPlaying, value); }
-    }
     public CommonControlViewModel(FengsaoService fengsaoService)
     {
-        IsPlaying = true;
     }
-    
+
 }

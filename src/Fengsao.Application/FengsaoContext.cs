@@ -9,7 +9,7 @@ namespace Fengsao.Application
 
         public DbSet<Book> Books { get; set; } = null!;
 
-        public DbSet<Dynasty> Dynastys { get; set; } = null!;
+        public DbSet<Dynasty> Dynasty { get; set; } = null!;
 
         public DbSet<Genre> Genres { get; set; } = null!;
 

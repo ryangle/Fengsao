@@ -23,7 +23,7 @@ public class AuthorsViewModel : BindableBase
         set { SetProperty(ref _authors, value); }
     }
     private int _currentPage = 0;
-    public int _pageSize = 100;
+    public int _pageSize = 60;
 
     private bool _canNext = true;
     public bool CanNext

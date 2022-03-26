@@ -5,16 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NodaTime;
 
 namespace Fengsao.Application.Services;
 
 public class FengsaoService
 {
     private readonly ILogger _logger;
-    public FengsaoService(ILogger<FengsaoService> logger)
-    {
-        _logger = logger;
-    }
+    //public FengsaoService(ILogger<FengsaoService> logger)
+    //{
+    //    _logger = logger;
+    //}
+
     public Author AddAuthor(Author author)
     {
         using FengsaoContext fengsaoContext = new FengsaoContext();
@@ -25,7 +27,7 @@ public class FengsaoService
     public Author AddAuthor(Author author, string dynastyName)
     {
         using FengsaoContext fengsaoContext = new FengsaoContext();
-        var dynasty = fengsaoContext.Dynastys.FirstOrDefault(x => x.Name == dynastyName);
+        var dynasty = fengsaoContext.Dynasty.FirstOrDefault(x => x.Name == dynastyName);
         if (dynasty != null)
         {
             author.DynastyId = dynasty.Id;
@@ -35,7 +37,7 @@ public class FengsaoService
     }
     public List<Author> GetAuthor(int page = 0, int pageSize = 100)
     {
-        _logger.LogDebug($"GetAuthro {page},{pageSize}");
+        _logger?.LogDebug($"GetAuthro {page},{pageSize}");
         if (page < 0 || pageSize <= 0)
         {
             return new List<Author>();
@@ -47,13 +49,25 @@ public class FengsaoService
     public Dynasty AddDynasty(Dynasty dynasty)
     {
         using FengsaoContext fengsaoContext = new FengsaoContext();
-        var exist = fengsaoContext.Dynastys.Any(x => x.Name == dynasty.Name);
+        var exist = fengsaoContext.Dynasty.Any(x => x.Name == dynasty.Name);
         if (!exist)
         {
-            fengsaoContext.Dynastys.Add(dynasty);
+            fengsaoContext.Dynasty.Add(dynasty);
             fengsaoContext.SaveChanges();
         }
         return dynasty;
+    }
+    public List<DynastyDto> GetDynastys()
+    {
+        using FengsaoContext fengsaoContext = new FengsaoContext();
+        var dynastyDtos = fengsaoContext.Dynasty.Select(d => new DynastyDto
+        {
+            Id = d.Id,
+            Name = d.Name,
+            Period = $"{Instant.FromUnixTimeSeconds(d.Start).ToString("yyyy g", null)}-{Instant.FromUnixTimeSeconds(d.End).ToString("yyyy g", null)}"
+        }).ToList();
+
+        return dynastyDtos;
     }
     public Textual AddTextual(Textual textual, string authorName)
     {

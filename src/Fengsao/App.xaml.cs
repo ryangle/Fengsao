@@ -31,6 +31,7 @@ namespace Fengsao
         {
             containerRegistry.Register<FengsaoService>();
             containerRegistry.RegisterForNavigation<RandomPoem>();
+            containerRegistry.RegisterForNavigation<Dynasty>();
         }
         protected override IContainerExtension CreateContainerExtension()
         {
