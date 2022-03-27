@@ -46,7 +46,7 @@ public class RandomPoemViewModel : BindableBase, INavigationAware
         var x = _fengsaoService.GetRandomTextual();
         PoemText = x.Text;
         PoemTitle = x.Title;
-        PoemAuthor = $"{x.AuthorName}";
+        PoemAuthor = $"{x.AuthorName}({x.DynastyName})";
     }
     public void OnNavigatedTo(NavigationContext navigationContext)
     {

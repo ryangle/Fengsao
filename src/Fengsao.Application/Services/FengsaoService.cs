@@ -12,10 +12,10 @@ namespace Fengsao.Application.Services;
 public class FengsaoService
 {
     private readonly ILogger _logger;
-    //public FengsaoService(ILogger<FengsaoService> logger)
-    //{
-    //    _logger = logger;
-    //}
+    public FengsaoService(ILogger<FengsaoService> logger)
+    {
+        _logger = logger;
+    }
 
     public Author AddAuthor(Author author)
     {
@@ -88,12 +88,23 @@ public class FengsaoService
         Random random = new Random();
         var r = random.Next(count - 1);
 
-        var result = fengsaoContext.Textuals.Where(t => t.Id == r).Join(fengsaoContext.Authors, t => t.AuthorId, a => a.Id, (t, a) => new PoemDto
-        {
-            Text = t.Text,
-            Title = t.Title,
-            AuthorName = a.Name
-        }).First();
+        var result = fengsaoContext.Textuals
+            .Where(t => t.Id == r)
+            .Join(fengsaoContext.Authors, t => t.AuthorId, a => a.Id, (t, a) => new
+            {
+                Text = t.Text,
+                Title = t.Title,
+                AuthorName = a.Name,
+                DynastyId = a.DynastyId
+            })
+            .Join(fengsaoContext.Dynasty, a => a.DynastyId, d => d.Id, (a, d) => new PoemDto
+            {
+                Text = a.Text,
+                Title = a.Title,
+                AuthorName = a.AuthorName,
+                DynastyName = d.Name
+            }).First();
+
         return result ?? new PoemDto();
     }
 }
