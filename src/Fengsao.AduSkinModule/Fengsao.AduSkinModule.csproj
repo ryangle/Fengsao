@@ -8,11 +8,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AduSkin" Version="1.1.1.9" />
 		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\AduSkin\AduSkin.csproj" />
 		<ProjectReference Include="..\Fengsao.Application\Fengsao.Application.csproj" />
 		<ProjectReference Include="..\Fengsao.Resources\Fengsao.Resources.csproj" />
 	</ItemGroup>

@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-windows</TargetFrameworks>
+		<GenerateDocumentFile>true</GenerateDocumentFile>
+		<UseWpf>true</UseWpf>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NoWarn>$(NoWarn);0067</NoWarn>
+		<PackageIcon>logo.png</PackageIcon>
+		<PackageIconUrl />
+		<Version>1.1.1.9</Version>
+		<Description>
+			一款简单漂亮的WPF UI
+			A Beautiful WPF Control UI
+		</Description>
+		<Platforms>AnyCPU;x64</Platforms>
+		<Copyright>AduSkin</Copyright>
+		<PackageTags>WPF UI</PackageTags>
+		<PackageReleaseNotes>控件细节优化</PackageReleaseNotes>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseFile>README.md</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+		<PackageReference Include="System.Management" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources/**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="Resources\logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

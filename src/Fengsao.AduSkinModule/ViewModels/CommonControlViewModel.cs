@@ -16,6 +16,12 @@ namespace Fengsao.AduSkinModule.ViewModels;
 
 public class CommonControlViewModel : BindableBase
 {
+    //private Visibility _errorVisibility;
+    //public Visibility ErrorVisibility
+    //{
+    //    get { return _errorVisibility; }
+    //    set { SetProperty(ref _errorVisibility, value); }
+    //}
     public CommonControlViewModel(FengsaoService fengsaoService)
     {
     }
