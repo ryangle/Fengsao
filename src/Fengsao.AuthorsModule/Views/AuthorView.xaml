@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Fengsao.AuthorsModule.Views.AuthorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
+             xmlns:AduAttach="clr-namespace:AduSkin.Controls.Attach;assembly=AduSkin"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             FontFamily="Microsoft YaHei UI" 
+             Background="#C7AB7A"
+             Height="450"
+             Width="500"
+             d:DesignHeight="450" d:DesignWidth="500">
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="ShowInTaskbar" Value="False"/>
+            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+            <Setter Property="Icon" Value="/Fengsao;component/Resource/logo.ico"/>
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Metro:MetroTextBlock 
+            HorizontalAlignment="Left"
+            Grid.Row="1"
+            Grid.Column="2"
+            TextWrapping="Wrap" 
+            Margin="0,0,10,0"
+            FontSize="18"
+            FontWeight="Light"
+            Foreground="{StaticResource DefaultWhiteBrush}" 
+            Text="{Binding Author.Name}" />
+        <Metro:MetroImage
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Margin="0,5,0,0" Source="{Binding Imagesource}" RenderOptions.BitmapScalingMode="Fant"/>
+        <Metro:MetroTextBlock 
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            Margin="0,0,10,0"
+            FontSize="12"
+            FontWeight="Light"
+          TextWrapping="Wrap"
+            Foreground="{StaticResource DefaultWhiteBrush}" 
+            Text="{Binding Author.Description}" />
+    </Grid>
+</UserControl>

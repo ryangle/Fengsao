@@ -35,9 +35,9 @@ public class FengsaoService
         AddAuthor(author);
         return author;
     }
-    public List<Author> GetAuthor(int page = 0, int pageSize = 100)
+    public List<Author> GetAuthors(int page = 0, int pageSize = 100)
     {
-        _logger?.LogDebug($"GetAuthro {page},{pageSize}");
+        _logger?.LogDebug($"GetAuthors {page},{pageSize}");
         if (page < 0 || pageSize <= 0)
         {
             return new List<Author>();
@@ -45,6 +45,17 @@ public class FengsaoService
         using FengsaoContext fengsaoContext = new FengsaoContext();
         var authors = fengsaoContext.Authors.Skip(page * pageSize).Take(pageSize).ToList();
         return authors ?? new List<Author>();
+    }
+    public Author GetAuthor(string authorName)
+    {
+        _logger?.LogDebug($"GetAuthor {authorName}");
+        if (string.IsNullOrEmpty(authorName))
+        {
+            return new Author();
+        }
+        using FengsaoContext fengsaoContext = new FengsaoContext();
+        var author = fengsaoContext.Authors.Where(a => a.Name == authorName).FirstOrDefault();
+        return author ?? new Author();
     }
     public Dynasty AddDynasty(Dynasty dynasty)
     {

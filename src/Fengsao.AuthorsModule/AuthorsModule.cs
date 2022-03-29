@@ -15,7 +15,7 @@ namespace Fengsao.AuthorsModule
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterDialog<AuthorView>("AuthorView");
         }
     }
 }

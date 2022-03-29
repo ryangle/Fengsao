@@ -7,6 +7,7 @@
              xmlns:AduAttach="clr-namespace:AduSkin.Controls.Attach;assembly=AduSkin"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True"
+             x:Name="AuthorsControl"
              mc:Ignorable="d" 
              FontFamily="Microsoft YaHei UI"  
              d:DesignHeight="450" d:DesignWidth="800">
@@ -29,7 +30,7 @@
                 <Path Fill="#5A5049" Grid.Column="2" VerticalAlignment="Bottom" Height="60" Data="M1056.256 483.84l38.912-26.112 57.856-36.864h9.216l12.8-10.24 2.56-1.024-64 74.24h-57.344z m235.52-105.984l-8.192 39.936-15.36 15.36 5.632 6.656-27.136 43.52h-59.904l33.28-50.688c25.6-6.144 48.64-25.088 69.12-57.856l2.56 3.072z m72.704 50.176c-4.608 24.064-12.8 42.496-25.088 55.296h-41.984l65.024-56.32c1.024 0.512 1.536 0.512 2.048 1.024z m19.456 55.808l29.696-40.448c10.752-11.264 18.944-14.336 25.088-9.216l5.632-7.168 0.512 0.512-26.112 56.832-34.816-0.512z m156.672 0l24.064-28.16h6.656l-9.728 28.16h-20.992z" Stretch="Uniform"/>
             </Grid>
         </Border>
-        <Metro:MetroScrollViewer Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Stretch"  VerticalScrollBarVisibility="Auto">
+        <Metro:MetroScrollViewer Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Auto">
             <ListBox ItemsSource="{Binding Authors}" Width="500" FontSize="18" Margin="0,20"
                         FontWeight="Light"
                         Foreground="{StaticResource DefaultWhiteBrush}" Background="#C7AB7A">
@@ -40,7 +41,9 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                    <Metro:AduButtonIcon Height="20" AduAttach:IconElement.Width="16" Width="85" CornerRadius="3" Content="{Binding}" Foreground="#FFF" />
+                        <!--两种绑定方式-->
+                        <Metro:AduButtonIcon Height="18" Command="{Binding ElementName=AuthorsControl,Path= DataContext.ShowAuthorCommand}" CommandParameter="{Binding}" Content="{Binding}" AduAttach:IconElement.Width="16" Width="85" CornerRadius="3"  Foreground="#FFF" />
+                        <!--<Metro:AduButtonIcon Height="18" Command="{Binding DataContext.ShowAuthorCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}" Content="{Binding}" AduAttach:IconElement.Width="16" Width="85" CornerRadius="3"  Foreground="#FFF" />-->
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

@@ -16,6 +16,8 @@ namespace Fengsao.AuthorsModule.ViewModels;
 
 public class AuthorsViewModel : BindableBase
 {
+    private readonly IDialogService _dialogService;
+
     private ObservableCollection<string>? _authors;
     public ObservableCollection<string>? Authors
     {
@@ -45,21 +47,36 @@ public class AuthorsViewModel : BindableBase
             PreviousCommand.RaiseCanExecuteChanged();
         }
     }
+    public DelegateCommand<string> ShowAuthorCommand { get; private set; }
     public DelegateCommand PreviousCommand { get; private set; }
     public DelegateCommand NextCommand { get; private set; }
 
     private FengsaoService _fengsaoService;
-    public AuthorsViewModel(FengsaoService fengsaoService)
+    public AuthorsViewModel(FengsaoService fengsaoService, IDialogService dialogService)
     {
         _fengsaoService = fengsaoService;
+        _dialogService = dialogService;
         Authors = new ObservableCollection<string>();
+        ShowAuthorCommand = new DelegateCommand<string>(ShowAuthor);
         PreviousCommand = new DelegateCommand(Previous).ObservesCanExecute(() => CanPrevious);
         NextCommand = new DelegateCommand(Next).ObservesCanExecute(() => CanNext);
-        var authors = _fengsaoService.GetAuthor(_currentPage, _pageSize);
+        var authors = _fengsaoService.GetAuthors(_currentPage, _pageSize);
         foreach (var author in authors)
         {
             Authors.Add(author.Name);
         }
+    }
+    public void ShowAuthor(string authorName)
+    {
+        var p = new DialogParameters();
+        p.Add("authorName", authorName);
+        _dialogService.Show("AuthorView", p, r =>
+        {
+            if (r.Result == ButtonResult.OK)
+            {
+                r.Parameters.GetValue<string>("authorName");
+            }
+        });
     }
     public void Previous()
     {
@@ -71,7 +88,7 @@ public class AuthorsViewModel : BindableBase
         CanNext = true;
 
         _currentPage--;
-        var authors = _fengsaoService.GetAuthor(_currentPage, _pageSize);
+        var authors = _fengsaoService.GetAuthors(_currentPage, _pageSize);
 
 
         if (Authors != null && authors != null)
@@ -86,7 +103,7 @@ public class AuthorsViewModel : BindableBase
     public void Next()
     {
         _currentPage++;
-        var authors = _fengsaoService.GetAuthor(_currentPage, _pageSize);
+        var authors = _fengsaoService.GetAuthors(_currentPage, _pageSize);
 
         if (authors != null && authors.Count > 0)
         {
