@@ -18,16 +18,16 @@ namespace Fengsao.AuthorsModule.ViewModels;
 
 public class AuthorViewModel : BindableBase, IDialogAware
 {
-    private string _authorName;
-    public string Title => _authorName;
+    private string? _authorName;
+    public string Title => _authorName ?? "";
     private Author? _author;
     public Author? Author
     {
         get { return _author; }
         set { SetProperty(ref _author, value); }
     }
-    private BitmapImage _imagesource;
-    public BitmapImage Imagesource
+    private BitmapImage? _imagesource;
+    public BitmapImage? Imagesource
     {
         get { return _imagesource; }
         set { SetProperty(ref _imagesource, value); }
@@ -35,7 +35,7 @@ public class AuthorViewModel : BindableBase, IDialogAware
 
     private FengsaoService _fengsaoService;
 
-    public event Action<IDialogResult> RequestClose;
+    public event Action<IDialogResult>? RequestClose;
 
     public AuthorViewModel(FengsaoService fengsaoService)
     {
@@ -48,10 +48,9 @@ public class AuthorViewModel : BindableBase, IDialogAware
 
     public void OnDialogClosed()
     {
-        if (RequestClose != null)
-        {
-            //RequestClose.Invoke();
-        }
+        var buttonResult = ButtonResult.OK;
+        var parameters = new DialogParameters();
+        RequestClose?.Invoke(new DialogResult(buttonResult, parameters));
     }
 
     public void OnDialogOpened(IDialogParameters parameters)
