@@ -14,6 +14,13 @@ namespace Fengsao.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            //this.Closed += delegate { System.Windows.Application.Current.Shutdown(); };
+            Theme.ColorChange += (s, e) =>
+            {
+                // 不要通过XAML来绑定颜色，无法获取到通知
+                BorderBrush = Theme.CurrentColor.OpaqueSolidColorBrush;
+            };
         }
     }
 }

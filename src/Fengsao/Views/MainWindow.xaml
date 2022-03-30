@@ -36,6 +36,15 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
+                <MenuItem Style="{StaticResource MenuItem_NonStyle}" Height="30" >
+                    <MenuItem.Header>
+                        <Grid>
+                            <TextBlock Text="主题色" Margin="10,0,5,0" VerticalAlignment="Center"/>
+                            <Metro:MetroColorPicker x:Name="Theme" Width="20" Height="20" DefaultColor="#5D6146" Background="#5D6146">
+                            </Metro:MetroColorPicker>
+                        </Grid>
+                    </MenuItem.Header>
+                </MenuItem>
             </Metro:MetroTitleMenuItem>
         </Metro:MetroTitleMenu>
     </Metro:MetroWindow.Menu>
