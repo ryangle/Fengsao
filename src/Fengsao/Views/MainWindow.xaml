@@ -69,6 +69,11 @@
                 <ContentControl prism:RegionManager.RegionName="PoemDynastyRegion"/>
             </Border>
         </Metro:AduTabItem>
+        <Metro:AduTabItem Header="全部">
+            <Border >
+                <ContentControl prism:RegionManager.RegionName="AllContentRegion"/>
+            </Border>
+        </Metro:AduTabItem>
         <Metro:AduTabItem Header="AduSkin">
             <Border >
                 <ContentControl prism:RegionManager.RegionName="OtherControlRegion"/>

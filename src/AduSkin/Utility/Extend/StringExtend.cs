@@ -38,6 +38,7 @@ namespace AduSkin.Utility.Extend
          Encoding gbEncoding;
          try
          {
+            Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             gbEncoding = System.Text.Encoding.GetEncoding("GB2312");
          }
          catch

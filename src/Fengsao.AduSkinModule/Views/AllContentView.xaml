@@ -1,0 +1,113 @@
+<UserControl x:Class="Fengsao.AduSkinModule.Views.AllContentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
+             xmlns:AduAttach="clr-namespace:AduSkin.Controls.Attach;assembly=AduSkin"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="900">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/AduTreeView.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/BaseStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/Converter.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fengsao.Resources;component/Styles/ShowControl.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Background="#D6CCC39B" BorderThickness="0,0,1,0" BorderBrush="{StaticResource DefaultBorderBrush}">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Metro:AduTabControl Grid.Row="2" SelectedIndex="{Binding SelectedDemoType}">
+                    <Metro:AduTabControl.Resources>
+                        <Style TargetType="TabPanel">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </Metro:AduTabControl.Resources>
+                    <Metro:AduTabItem Header="全部">
+                        <ListBox ItemsSource="{Binding AllMenus}" BorderThickness="0" Background="Transparent" SelectedItem="{Binding CurrentShowControl}">
+                            <ListBox.Resources>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="Padding" Value="0" />
+                                    <Setter Property="Cursor" Value="Hand"></Setter>
+                                </Style>
+                            </ListBox.Resources>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border MinHeight="40" Width="250" Background="#00000000" x:Name="Bd" BorderBrush="#EBEBEB" BorderThickness="0 1 0 0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="80" x:Name="state"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding Title}" Style="{StaticResource H5}" Foreground="{StaticResource DefaultBrush}" Margin="20,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                            <Border Grid.Column="1" x:Name="states" Background="{StaticResource DefaultBrush}" CornerRadius="8" Height="15" MinWidth="30" Padding="4,0" HorizontalAlignment="Center">
+                                                <TextBlock x:Name="stateName" Text="NEW" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}"  Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#EAEAEA" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=State}"  Value="New">
+                                            <Setter TargetName="state" Property="Width" Value="80" />
+                                            <Setter TargetName="stateName" Property="Text" Value="NEW" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=State}"  Value="InDev">
+                                            <Setter TargetName="state" Property="Width" Value="80" />
+                                            <Setter TargetName="states" Property="Background" Value="#3399FF" />
+                                            <Setter TargetName="stateName" Property="Text" Value="InDev" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=State}"  Value="Nor">
+                                            <Setter TargetName="state" Property="Width" Value="0" />
+                                            <Setter TargetName="states" Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsMouseOver" Value="True" />
+                                            </MultiTrigger.Conditions>
+                                            <Setter TargetName="Bd" Property="Background" Value="WhiteSmoke" />
+                                        </MultiTrigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter TargetName="Bd" Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                                        </Trigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Metro:AduTabItem>
+                </Metro:AduTabControl>
+            </Grid>
+        </Border>
+        <Grid Background="{StaticResource MainContentForegroundDrawingBrush}" Grid.Column="1">
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40,0,40,40" Margin="20" MinWidth="600" Background="#FFF" CornerRadius="6" Effect="{StaticResource CardShadow}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition MinHeight="200" Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="{Binding Title}" Style="{StaticResource H5}" VerticalAlignment="Center" Margin="20,0"/>
+                    <ContentPresenter Grid.Row="1" Content="{Binding Content}"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

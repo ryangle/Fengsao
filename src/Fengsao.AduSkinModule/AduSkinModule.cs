@@ -11,6 +11,7 @@ namespace Fengsao.AuthorsModule
         {
             var regionManager = containerProvider.Resolve<IRegionManager>();
             regionManager.RegisterViewWithRegion("OtherControlRegion", typeof(CommonControl));
+            regionManager.RegisterViewWithRegion("AllContentRegion", typeof(AllContentView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
