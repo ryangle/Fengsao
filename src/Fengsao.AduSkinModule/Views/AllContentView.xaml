@@ -6,7 +6,9 @@
              xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
              xmlns:AduAttach="clr-namespace:AduSkin.Controls.Attach;assembly=AduSkin"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              prism:ViewModelLocator.AutoWireViewModel="True"
+             x:Name="AllContentControl"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="900">
     <UserControl.Resources>
@@ -32,7 +34,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <Metro:AduTabControl Grid.Row="2" SelectedIndex="{Binding SelectedDemoType}">
                     <Metro:AduTabControl.Resources>
                         <Style TargetType="TabPanel">
@@ -57,7 +59,11 @@
                                                 <ColumnDefinition/>
                                                 <ColumnDefinition Width="80" x:Name="state"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Text="{Binding Title}" Style="{StaticResource H5}" Foreground="{StaticResource DefaultBrush}" Margin="20,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding Title}" Style="{StaticResource H5}" Foreground="{StaticResource DefaultBrush}" Margin="20,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding ElementName=AllContentControl, Path=DataContext.ShowControlCommand}" CommandParameter="{Binding Title}" MouseAction="LeftClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
                                             <Border Grid.Column="1" x:Name="states" Background="{StaticResource DefaultBrush}" CornerRadius="8" Height="15" MinWidth="30" Padding="4,0" HorizontalAlignment="Center">
                                                 <TextBlock x:Name="stateName" Text="NEW" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF"/>
                                             </Border>
@@ -98,14 +104,14 @@
             </Grid>
         </Border>
         <Grid Background="{StaticResource MainContentForegroundDrawingBrush}" Grid.Column="1">
-            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40,0,40,40" Margin="20" MinWidth="600" Background="#FFF" CornerRadius="6" Effect="{StaticResource CardShadow}">
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,0,10,10" Margin="0" MinWidth="600" Background="#FFF" CornerRadius="6" Effect="{StaticResource CardShadow}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60"/>
-                        <RowDefinition MinHeight="200" Height="Auto"/>
+                        <RowDefinition MinHeight="400" Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="{Binding Title}" Style="{StaticResource H5}" VerticalAlignment="Center" Margin="20,0"/>
-                    <ContentPresenter Grid.Row="1" Content="{Binding Content}"/>
+                    <TextBlock Grid.Row="0" Text="{Binding Title}" Style="{StaticResource H5}" VerticalAlignment="Center" Margin="10,0"/>
+                    <ContentControl  Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"/>
                 </Grid>
             </Border>
         </Grid>

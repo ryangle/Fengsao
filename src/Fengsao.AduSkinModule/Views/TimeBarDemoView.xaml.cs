@@ -17,9 +17,9 @@ namespace Fengsao.AduSkinModule.Views
    /// <summary>
    /// TimeBarControl.xaml 的交互逻辑
    /// </summary>
-   public partial class TimeBarDemo : UserControl
+   public partial class TimeBarDemoView : UserControl
    {
-      public TimeBarDemo()
+      public TimeBarDemoView()
       {
          InitializeComponent();
       }

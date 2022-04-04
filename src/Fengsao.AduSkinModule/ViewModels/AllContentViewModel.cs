@@ -19,8 +19,8 @@ namespace Fengsao.AduSkinModule.ViewModels;
 
 public class AllContentViewModel : BindableBase
 {
-    private ObservableCollection<ControlModel>? _allMenus;
-    public ObservableCollection<ControlModel>? AllMenus
+    private ObservableCollection<MenuModel>? _allMenus;
+    public ObservableCollection<MenuModel>? AllMenus
     {
         get { return _allMenus; }
         set { SetProperty(ref _allMenus, value); }
@@ -34,11 +34,17 @@ public class AllContentViewModel : BindableBase
         get { return _SelectedDemoType; }
         set { SetProperty(ref _SelectedDemoType, value); }
     }
-    private ControlModel _CurrentShowControl;
+    private MenuModel _CurrentShowControl;
+    private string _title;
+    public string Title
+    {
+        get { return _title; }
+        set { SetProperty(ref _title, value); }
+    }
     /// <summary>
     /// 当前显示控件
     /// </summary>
-    public ControlModel CurrentShowControl
+    public MenuModel CurrentShowControl
     {
         get { return _CurrentShowControl; }
         set
@@ -46,27 +52,39 @@ public class AllContentViewModel : BindableBase
             SetProperty(ref _CurrentShowControl, value);
         }
     }
-    public AllContentViewModel(FengsaoService fengsaoService)
+    public DelegateCommand<string> ShowControlCommand { get; private set; }
+    private readonly IRegionManager _regionManager;
+    public AllContentViewModel(FengsaoService fengsaoService, IRegionManager regionManager)
     {
-        AllMenus = new ObservableCollection<ControlModel>()
+        ShowControlCommand = new DelegateCommand<string>(ShowControl);
+        _regionManager = regionManager;
+        AllMenus = new ObservableCollection<MenuModel>()
         {
-            //new ControlModel("Win10菜单", typeof(SortGroup)),
-            //new ControlModel("图片上传", typeof(UploadPic)),
-            //new ControlModel("视频控件", typeof(VideoPlayer)),
-            new ControlModel("折叠菜单", typeof(ExpanderMenu)),
-            new ControlModel("导航容器", typeof(NavigationPanel)),
-            new ControlModel("轮播容器", typeof(CarouselContainer)),
-            new ControlModel("封面流", typeof(CoverFlowDemo)),
-            new ControlModel("时间轴", typeof(TimeLine)),
-            new ControlModel("时间线", typeof(TimeBarDemo)),
-            new ControlModel("树形菜单", typeof(TreeMenu)),
-            new ControlModel("数据列表", typeof(DataGridDemo)),
-            new ControlModel("多功能Tab", typeof(MultiFunctionTabControl)),
-            //new ControlModel("右键菜单", typeof(ContextMenuDemo), DemoType.Demo),
-            //new ControlModel("右侧弹框", typeof(NoticeDemo)),
-            //new ControlModel("过渡容器", typeof(TransitioningContentControlDemo), DemoType.Demo),
-            //new ControlModel("消息弹框", typeof(MessageBoxDemo), DemoType.Demo, ControlState.New),
+            //new MenuModel("Win10菜单", typeof(SortGroup)),
+            //new MenuModel("图片上传", typeof(UploadPic)),
+            //new MenuModel("视频控件", typeof(VideoPlayer)),
+            new MenuModel("折叠菜单", typeof(ExpanderMenu)),
+            new MenuModel("导航容器", typeof(NavigationPanel)),
+            new MenuModel("轮播容器", typeof(CarouselContainer)),
+            new MenuModel("封面流", typeof(CoverFlowDemo)),
+            new MenuModel("时间轴", typeof(TimeLine)),
+            new MenuModel("时间线", typeof(TimeBarDemoView)),
+            new MenuModel("树形菜单", typeof(TreeMenu)),
+            new MenuModel("数据列表", typeof(DataGridDemo)),
+            new MenuModel("多功能Tab", typeof(MultiFunctionTabControl)),
+            new MenuModel("右键菜单", typeof(ContextMenuDemo), DemoType.Demo),
+            //new MenuModel("右侧弹框", typeof(NoticeDemo)),
+            //new MenuModel("过渡容器", typeof(TransitioningContentControlDemo), DemoType.Demo),
+            //new MenuModel("消息弹框", typeof(MessageBoxDemo), DemoType.Demo, ControlState.New),
          };
     }
-
+    private void ShowControl(string controlTitle)
+    {
+        Title = controlTitle;
+        var menu = AllMenus?.First(m => m.Title == controlTitle);
+        if (menu != null)
+        {
+            _regionManager.RequestNavigate("ContentRegion", menu.Content.Name);
+        }
+    }
 }

@@ -3,9 +3,9 @@ using AduSkin.Utility.Extend;
 
 namespace Fengsao.AduSkinModule.Models;
 
-public class ControlModel
+public class MenuModel
 {
-    public ControlModel(string title, Type content, DemoType type = DemoType.Demo, ControlState state = ControlState.Nor, string xaml = "", string code = "", string tags = "")
+    public MenuModel(string title, Type content, DemoType type = DemoType.Demo, ControlState state = ControlState.Nor, string xaml = "", string code = "", string tags = "")
     {
         Title = title;
         TitlePinyin = StringExtend.GetPinyin(title);
@@ -17,7 +17,7 @@ public class ControlModel
         State = state;
     }
 
-    public ControlModel()
+    public MenuModel()
     {
         Tags = string.Empty;
     }
