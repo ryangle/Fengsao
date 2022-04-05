@@ -1,4 +1,4 @@
-﻿using Fengsao.AduSkinModule.Enum;
+﻿using Fengsao.AduSkinModule.Models;
 using AduSkin.Utility.Extend;
 
 namespace Fengsao.AduSkinModule.Models;

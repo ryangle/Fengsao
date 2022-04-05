@@ -1,5 +1,4 @@
-﻿using Fengsao.AduSkinModule.Enum;
-using Fengsao.AduSkinModule.Models;
+﻿using Fengsao.AduSkinModule.Models;
 using Fengsao.AduSkinModule.Views;
 using Fengsao.Application.Models;
 using Fengsao.Application.Services;
@@ -60,7 +59,7 @@ public class AllContentViewModel : BindableBase
         _regionManager = regionManager;
         AllMenus = new ObservableCollection<MenuModel>()
         {
-            //new MenuModel("Win10菜单", typeof(SortGroup)),
+            new MenuModel("Win10菜单", typeof(SortGroup)),
             //new MenuModel("图片上传", typeof(UploadPic)),
             //new MenuModel("视频控件", typeof(VideoPlayer)),
             new MenuModel("折叠菜单", typeof(ExpanderMenu)),
@@ -74,7 +73,7 @@ public class AllContentViewModel : BindableBase
             new MenuModel("多功能Tab", typeof(MultiFunctionTabControl)),
             new MenuModel("右键菜单", typeof(ContextMenuDemo), DemoType.Demo),
             //new MenuModel("右侧弹框", typeof(NoticeDemo)),
-            //new MenuModel("过渡容器", typeof(TransitioningContentControlDemo), DemoType.Demo),
+            new MenuModel("过渡容器", typeof(TransitioningContentControlDemo), DemoType.Demo),
             //new MenuModel("消息弹框", typeof(MessageBoxDemo), DemoType.Demo, ControlState.New),
          };
     }

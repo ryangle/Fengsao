@@ -59,11 +59,12 @@
                                                 <ColumnDefinition/>
                                                 <ColumnDefinition Width="80" x:Name="state"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Text="{Binding Title}" Style="{StaticResource H5}" Foreground="{StaticResource DefaultBrush}" Margin="20,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                            <!--<TextBlock Text="{Binding Title}" Style="{StaticResource H5}" Foreground="{StaticResource DefaultBrush}" Margin="20,0" VerticalAlignment="Center" HorizontalAlignment="Left">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding ElementName=AllContentControl, Path=DataContext.ShowControlCommand}" CommandParameter="{Binding Title}" MouseAction="LeftClick" />
                                                 </TextBlock.InputBindings>
-                                            </TextBlock>
+                                            </TextBlock>-->
+                                            <Metro:AduFlatButton Content="{Binding Title}" Command="{Binding ElementName=AllContentControl, Path=DataContext.ShowControlCommand}" CommandParameter="{Binding Title}" Foreground="{StaticResource DefaultBrush}" Background="#D6CCC39B" Margin="20,0" VerticalAlignment="Center" HorizontalAlignment="Left" />
                                             <Border Grid.Column="1" x:Name="states" Background="{StaticResource DefaultBrush}" CornerRadius="8" Height="15" MinWidth="30" Padding="4,0" HorizontalAlignment="Center">
                                                 <TextBlock x:Name="stateName" Text="NEW" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF"/>
                                             </Border>
