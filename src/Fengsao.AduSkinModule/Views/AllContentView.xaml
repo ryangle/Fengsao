@@ -6,7 +6,6 @@
              xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
              xmlns:AduAttach="clr-namespace:AduSkin.Controls.Attach;assembly=AduSkin"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              prism:ViewModelLocator.AutoWireViewModel="True"
              x:Name="AllContentControl"
              mc:Ignorable="d" 
