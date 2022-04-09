@@ -50,6 +50,7 @@ public class RandomPoemViewModel : BindableBase, INavigationAware
     }
     public void OnNavigatedTo(NavigationContext navigationContext)
     {
+        
         //throw new NotImplementedException();
     }
 

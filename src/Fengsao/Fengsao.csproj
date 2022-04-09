@@ -35,4 +35,10 @@
     <Resource Include="Resource\logo.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Views\ShowAduSkin.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

@@ -7,7 +7,3 @@
 * ORM框架采用[Entity Framework Core](https://github.com/dotnet/efcore)；
 * 日志组件采用[Serilog](https://github.com/serilog/serilog);
 
-## 计划
-
-* 全文搜索
-* 图表

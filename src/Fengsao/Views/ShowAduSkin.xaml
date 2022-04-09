@@ -1,4 +1,4 @@
-﻿<Metro:MetroWindow x:Class="Fengsao.Views.MainWindow"
+﻿<Metro:MetroWindow x:Class="Fengsao.Views.ShowAduSkin"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -19,31 +19,13 @@
                    Icon="/Resource/logo.ico"
                    Background="#FFF"
                    mc:Ignorable="d"
-                   Title="风骚">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadingCommand}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+                   Title="Aduskin">
     <Metro:MetroWindow.Menu>
         <Metro:MetroTitleMenu Height="40">
             <Metro:MetroTitleMenuItem Header="关于">
-                <MenuItem  Height="30" >
+                <MenuItem  Height="30" Command="{Binding ShowFengsaoCommand}">
                     <MenuItem.Header>
-                        <TextBlock Text="Ryangle" Margin="10,0,5,0" VerticalAlignment="Center"/>
-                    </MenuItem.Header>
-                </MenuItem>
-                <MenuItem Style="{StaticResource MenuItem_NonStyle}" Height="30" >
-                    <MenuItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="主题色" Margin="10,0,5,0" VerticalAlignment="Center"/>
-                            <Metro:MetroColorPicker x:Name="Theme" Width="20" Height="20" DefaultColor="#5D6146" Background="#5D6146" />
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-                <MenuItem  Height="30" Command="{Binding ShowAduskinCommand}">
-                    <MenuItem.Header>
-                        <Metro:MetroTextBlock Text="AduSkin" />
+                        <Metro:MetroTextBlock Text="风骚" />
                     </MenuItem.Header>
                 </MenuItem>
             </Metro:MetroTitleMenuItem>
@@ -55,24 +37,14 @@
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
         </Metro:AduTabControl.Resources>
-        <Metro:AduTabItem Header="随缘">
-            <Border >
-                <ContentControl prism:RegionManager.RegionName="RandomPoemRegion"/>
-            </Border>
-        </Metro:AduTabItem>
-        <Metro:AduTabItem Header="作者">
-            <Border >
-                <ContentControl prism:RegionManager.RegionName="PoemAuthorRegion"/>
-            </Border>
-        </Metro:AduTabItem>
-        <Metro:AduTabItem Header="朝代">
-            <Border >
-                <ContentControl prism:RegionManager.RegionName="PoemDynastyRegion"/>
-            </Border>
-        </Metro:AduTabItem>
         <Metro:AduTabItem Header="全部">
             <Border >
-                <ContentControl prism:RegionManager.RegionName="EditRegion"/>
+                <ContentControl prism:RegionManager.RegionName="AllContentRegion"/>
+            </Border>
+        </Metro:AduTabItem>
+        <Metro:AduTabItem Header="AduSkin">
+            <Border >
+                <ContentControl prism:RegionManager.RegionName="OtherControlRegion"/>
             </Border>
         </Metro:AduTabItem>
     </Metro:AduTabControl>

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Unity;
 using Unity.Microsoft.DependencyInjection;
+using Fengsao.ViewModels;
 
 namespace Fengsao
 {
@@ -30,8 +31,10 @@ namespace Fengsao
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<FengsaoService>();
-            containerRegistry.RegisterForNavigation<RandomPoem>();
+            //containerRegistry.RegisterSingleton<RandomPoem>();
+            containerRegistry.RegisterForNavigation<RandomPoem, RandomPoemViewModel>();
             containerRegistry.RegisterForNavigation<Dynasty>();
+            containerRegistry.RegisterForNavigation<ShowAduSkin>();
         }
         protected override IContainerExtension CreateContainerExtension()
         {

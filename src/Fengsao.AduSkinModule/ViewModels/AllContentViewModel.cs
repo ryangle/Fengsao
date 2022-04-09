@@ -59,7 +59,7 @@ public class AllContentViewModel : BindableBase
         _regionManager = regionManager;
         AllMenus = new ObservableCollection<MenuModel>()
         {
-            new MenuModel("Win10菜单", typeof(SortGroup)),
+            //new MenuModel("Win10菜单", typeof(SortGroup)),
             //new MenuModel("图片上传", typeof(UploadPic)),
             //new MenuModel("视频控件", typeof(VideoPlayer)),
             new MenuModel("折叠菜单", typeof(ExpanderMenu)),
