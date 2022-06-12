@@ -2,6 +2,7 @@
 using Fengsao.AduSkinModule.Views;
 using Fengsao.Application.Models;
 using Fengsao.Application.Services;
+using Fengsao.Resources;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -33,7 +34,7 @@ public class AllContentViewModel : BindableBase
         get { return _SelectedDemoType; }
         set { SetProperty(ref _SelectedDemoType, value); }
     }
-    private MenuModel _CurrentShowControl;
+    private MenuModel _currentShowControl;
     private string _title;
     public string Title
     {
@@ -45,10 +46,10 @@ public class AllContentViewModel : BindableBase
     /// </summary>
     public MenuModel CurrentShowControl
     {
-        get { return _CurrentShowControl; }
+        get { return _currentShowControl; }
         set
         {
-            SetProperty(ref _CurrentShowControl, value);
+            SetProperty(ref _currentShowControl, value);
         }
     }
     public DelegateCommand<string> ShowControlCommand { get; private set; }
@@ -76,6 +77,12 @@ public class AllContentViewModel : BindableBase
             new MenuModel("过渡容器", typeof(TransitioningContentControlDemo), DemoType.Demo),
             //new MenuModel("消息弹框", typeof(MessageBoxDemo), DemoType.Demo, ControlState.New),
          };
+
+        //var regions = _regionManager.Regions;
+        //if (!regions.ContainsRegionWithName("ContentRegion"))
+        //{
+        //    _regionManager.RegisterViewWithRegion("ContentRegion", "CarouselContainer");
+        //}
     }
     private void ShowControl(string controlTitle)
     {
@@ -83,7 +90,11 @@ public class AllContentViewModel : BindableBase
         var menu = AllMenus?.First(m => m.Title == controlTitle);
         if (menu != null)
         {
-            _regionManager.RequestNavigate("ContentRegion", menu.Content.Name);
+            //_regionManager.RegisterViewWithRegion(FengsaoConst.RegionNameContent, menu.Content.Name);
+
+            //var v = _regionManager.Regions["ContentRegion"].GetView(menu.Content.Name);
+            //var c = _regionManager.Regions.ContainsRegionWithName(FengsaoConst.RegionNameContent);
+            _regionManager.RequestNavigate(FengsaoConst.RegionNameContent, menu.Content.Name);
         }
     }
 }

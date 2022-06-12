@@ -9,6 +9,8 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              FontFamily="Microsoft YaHei UI"  
+             Width="800"
+             Height="450"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>

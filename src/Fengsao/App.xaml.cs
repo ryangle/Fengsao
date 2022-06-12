@@ -25,16 +25,22 @@ namespace Fengsao
                 .MinimumLevel.Debug()
                 .WriteTo.File("fengsao_.log", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
-            return Container.Resolve<MainWindow>();
+            
+            //var aduskin = Container.Resolve<ShowAduSkin>();
+            //var regionManager = Container.Resolve<RegionManager>();
+            //RegionManager.SetRegionManager(aduskin, regionManager);
+
+            return Container.Resolve<ShellView>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<FengsaoService>();
-            //containerRegistry.RegisterSingleton<RandomPoem>();
+            //containerRegistry.RegisterSingleton<MainWindow>();
+            //containerRegistry.RegisterSingleton<ShowAduSkin>();
             containerRegistry.RegisterForNavigation<RandomPoem, RandomPoemViewModel>();
             containerRegistry.RegisterForNavigation<Dynasty>();
-            containerRegistry.RegisterForNavigation<ShowAduSkin>();
+            //containerRegistry.RegisterForNavigation<ShowAduSkin>();
         }
         protected override IContainerExtension CreateContainerExtension()
         {

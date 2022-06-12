@@ -1,6 +1,8 @@
 ﻿using Fengsao.Application.Services;
+using Fengsao.Resources;
 using Fengsao.Views;
 using Prism.Commands;
+using Prism.Common;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
@@ -17,24 +19,42 @@ public class MainWindowViewModel : BindableBase
 {
     private IRegionManager _regionMannager;
     private IContainerProvider _containerProvider;
-    private IRegion _randomRegion;
-
+    private int _width;
+    public int Width
+    {
+        get { return _width; }
+        set { SetProperty(ref _width, value); }
+    }
     public DelegateCommand LoadingCommand { get; set; }
     public DelegateCommand ShowAduskinCommand { get; set; }
 
     void ExecuteLoadingCommand()
     {
-        //_regionMannager.RequestNavigate("RandomPoemRegion", "RandomPoem");
-        //_regionMannager.RequestNavigate("PoemDynastyRegion", "Dynasty");
-        //_regionMannager.RequestNavigate("EditRegion", "Dynasty");
+        //_regionMannager.RequestNavigate(FengsaoConst.RegionNameRandomPoem, "RandomPoem");
+        //_regionMannager.RequestNavigate(FengsaoConst.RegionNamePoemDynasty, "Dynasty");
+        //_regionMannager.RequestNavigate(FengsaoConst.RegionNameEdit, "Dynasty");
     }
     void ShowAduskin()
     {
-        var nextWindow = _containerProvider.Resolve<ShowAduSkin>();
-        var currentWindow = System.Windows.Application.Current.MainWindow;
-        System.Windows.Application.Current.MainWindow = nextWindow;
-        nextWindow.Show();
-        currentWindow.Close();
+        //var nextWindow = _containerProvider.Resolve<ShowAduSkin>();
+        //var currentWindow = System.Windows.Application.Current.MainWindow;
+        //System.Windows.Application.Current.MainWindow = nextWindow;
+
+        ////MvvmHelpers.AutowireViewModel(currentWindow);
+        ////if (nextWindow is FrameworkElement view && view.DataContext is null && ViewModelLocator.GetAutoWireViewModel(view) is null)
+        ////{
+        ////    ViewModelLocator.SetAutoWireViewModel(view, true);
+        ////}
+        ////var r = _regionMannager.Regions.ContainsRegionWithName(FengsaoConst.RegionNameOtherControl);
+        ////if (!r)
+        ////{
+        ////    RegionManager.SetRegionManager(nextWindow, _regionMannager);
+        ////}
+        ////RegionManager.UpdateRegions();
+
+        //nextWindow.Show();
+        //currentWindow.Hide();
+        Width = 1000;
     }
     public MainWindowViewModel(IRegionManager regionManager, IContainerProvider containerProvider)
     {
@@ -42,26 +62,23 @@ public class MainWindowViewModel : BindableBase
         LoadingCommand = new DelegateCommand(ExecuteLoadingCommand);
         _regionMannager = regionManager;
         _containerProvider = containerProvider;
-        ResisterView();
+        RegisterViewWithRegion();
+        Width = 500;
     }
-    void ResisterView()
+    void RegisterViewWithRegion()
     {
-        var r = _regionMannager.Regions.ContainsRegionWithName("RandomPoemRegion");
-        if (!r)
+        var regions = _regionMannager.Regions;
+        if (!regions.ContainsRegionWithName(FengsaoConst.RegionNameRandomPoem))
         {
-            _regionMannager.RegisterViewWithRegion("RandomPoemRegion", "RandomPoem");
+            _regionMannager.RegisterViewWithRegion(FengsaoConst.RegionNameRandomPoem, typeof(RandomPoem));
         }
-         r = _regionMannager.Regions.ContainsRegionWithName("PoemDynastyRegion");
-        if (!r)
+        if (!regions.ContainsRegionWithName(FengsaoConst.RegionNamePoemDynasty))
         {
-            _regionMannager.RegisterViewWithRegion("PoemDynastyRegion", "Dynasty");
+            _regionMannager.RegisterViewWithRegion(FengsaoConst.RegionNamePoemDynasty, typeof(Dynasty));
         }
-         r = _regionMannager.Regions.ContainsRegionWithName("EditRegion");
-        if (!r)
+        if (!regions.ContainsRegionWithName(FengsaoConst.RegionNameEdit))
         {
-            _regionMannager.RegisterViewWithRegion("EditRegion", "Dynasty");
+            _regionMannager.RegisterViewWithRegion(FengsaoConst.RegionNameEdit, typeof(Dynasty));
         }
-        //_regionMannager.RequestNavigate("PoemDynastyRegion", "Dynasty");
-        //_regionMannager.RequestNavigate("EditRegion", "Dynasty");
     }
 }

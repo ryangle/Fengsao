@@ -2,15 +2,16 @@
 using Prism.Ioc;
 using Prism.Regions;
 using AduSkin.Controls.Metro;
+using Fengsao.Views;
 
 namespace Fengsao.Views
 {
     /// <summary>
-    /// Interaction logic for ShowAduSkin.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class ShowAduSkin : MetroWindow
+    public partial class ShellView : MetroWindow
     {
-        public ShowAduSkin()
+        public ShellView()
         {
             InitializeComponent();
         }

@@ -10,7 +10,7 @@
                    prism:ViewModelLocator.AutoWireViewModel="True"
                    MinWidth="600"
                    MinHeight="350"
-                   Width="1000"
+                   Width="{Binding Width}"
                    Height="600"
                    d:DesignWidth="1000"
                    d:DesignHeight="600"
